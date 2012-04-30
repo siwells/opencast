@@ -5,6 +5,14 @@ def num_issues(file_name):
     with open(file_name, 'r') as file:
         infile = json.load(file)
     return len(infile["issues"])
+    
+def subjects(file_name):
+    with open(file_name, 'r') as file:
+        infile = json.load(file)
+    subjects = []
+    for i in range(len(infile["issues"])):
+        subjects.append(infile["issues"][i]["subject"])
+    return subjects
 
 def pretty_print_file():
     file_name = "design.json"
