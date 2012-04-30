@@ -1,6 +1,11 @@
 import json
 import urllib2
 
+def num_issues(file_name):
+    with open(file_name, 'r') as file:
+        infile = json.load(file)
+    return len(infile["issues"])
+
 def pretty_print_file():
     file_name = "design.json"
     with open(file_name, 'r') as file:
