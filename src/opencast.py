@@ -3,7 +3,7 @@ import urllib2
 def pretty_print_file():
     file_name = "design.json"
     with open(file_name, 'r') as file:
-    infile = json.load(file)
+        infile = json.load(file)
     outfile = "pp_"+file_name
     with open(outfile, 'w') as file:
         file.write(json.dumps(infile, sort_keys=False, indent=4))
@@ -11,7 +11,7 @@ def pretty_print_file():
 def pretty_print_screen():
     file_name = "design.json"
     with open(file_name, 'r') as file:
-    infile = json.load(file)
+        infile = json.load(file)
     print json.dumps(infile, sort_keys = False, indent = 4)
 
 def retrieve_issues():
@@ -35,3 +35,5 @@ def retrieve_issues():
 
 if __name__ == '__main__':
     print "OpenCast :: The RedMine Requirements Document Generator"
+    
+    pretty_print_screen()
