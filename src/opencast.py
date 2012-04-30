@@ -14,10 +14,10 @@ def pretty_print_screen(file_name):
         infile = json.load(file)
     print json.dumps(infile, sort_keys = False, indent = 4)
 
-def retrieve_issues():
+def retrieve_issues(user, passwd):
     file_name = "design.json"
     auth_handler = urllib2.HTTPBasicAuthHandler()
-    auth_handler.add_password(realm='Redmine API', uri='https://developers.superhub-project.eu/projects/wp1/issues.json', user='swells', passwd='marma1ad3')
+    auth_handler.add_password(realm='Redmine API', uri='https://developers.superhub-project.eu/projects/wp1/issues.json', user, passwd)
 
     opener = urllib2.build_opener(auth_handler)
     urllib2.install_opener(opener)
