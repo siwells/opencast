@@ -1,5 +1,13 @@
 import urllib2
 
+def pretty_print_file():
+    file_name = "design.json"
+    with open(file_name, 'r') as file:
+    infile = json.load(file)
+    outfile = "pp_"+file_name
+    with open(outfile, 'w') as file:
+        file.write(json.dumps(infile, sort_keys=False, indent=4))
+
 def retrieve_issues():
     file_name = "design.json"
     auth_handler = urllib2.HTTPBasicAuthHandler()
