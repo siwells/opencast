@@ -8,8 +8,8 @@ A tool to generate formal requirements documents from a RedMine issue tracker. I
 
 Setup the VirtualEnv
 ====================
-Decide where you want to store your virtualenv. I use a hidden (dotfile) alongside my project repo, so if moot is stored in the projects/moot then the virtualenv is in projects/.moot
+Decide where you want to store your virtualenv. I use a folder in my project root named $PROJECT.env, so if opencast is stored in projects/opencast then the virtualenv is in projects/opencast/opencast.env/
 
-You can now create a virtualenv for moot using:
+You can now create a virtualenv for opencast using the following command in /projects/opencast/:
 
-    $ virtualenv --no-site-packages --distribute .moot && source .moot/bin/activate && pip install -r moot/requirements.txt
+    $ virtualenv --no-site-packages --distribute opencast.env && source opencast.env/bin/activate && pip install -r opencast.env/requirements.txt
