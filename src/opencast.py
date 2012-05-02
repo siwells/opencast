@@ -1,7 +1,18 @@
+import ConfigParser
 import json
 import urllib2
 
+config = ConfigParser.ConfigParser()
+
 issues_file = "design.json"
+
+def init_config():
+    try:
+        config.read('etc/defaults.cfg')
+        print config.get("opencast", "outfile")
+        
+    except:
+        print 'Could not read etc/defaults.cfg using hardcoded defaults instead'    
 
 def description(issue_id):
     with open(issues_file, 'r') as file:
@@ -57,3 +68,5 @@ def retrieve_issues(user, passwd, file_name):
 
 if __name__ == '__main__':
     print "OpenCast :: The RedMine Requirements Document Generator"
+    init_config()
+    
