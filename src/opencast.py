@@ -11,10 +11,10 @@ def description(issue_id):
             return issues["issues"][i]["description"]
     return None
 
-def num_issues(file_name):
-    with open(file_name, 'r') as file:
-        infile = json.load(file)
-    return len(infile["issues"])
+def num_issues():
+    with open(issues_file, 'r') as file:
+        issues = json.load(file)
+    return len(issues["issues"])
     
 def subjects(file_name):
     with open(file_name, 'r') as file:
