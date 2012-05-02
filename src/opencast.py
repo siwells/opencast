@@ -1,6 +1,14 @@
 import json
 import urllib2
 
+def description(file_name, issue_id):
+    with open(file_name, 'r') as file:
+        infile = json.load(file)
+    for i in range(len(infile["issues"])):
+        if issue_id == infile["issues"][i]["id"]:
+            return infile["issues"][i]["description"]
+    return None
+
 def num_issues(file_name):
     with open(file_name, 'r') as file:
         infile = json.load(file)
