@@ -4,13 +4,9 @@ import urllib2
 
 config = ConfigParser.ConfigParser()
 
-#issues_file = "design.json"
-
 def init_config():
     try:
         config.read('etc/defaults.cfg')
-        print config.get("opencast", "issues_file")
-        
     except:
         print 'Could not read etc/defaults.cfg using hardcoded defaults instead'    
 
@@ -23,12 +19,12 @@ def description(issue_id):
     return None
 
 def num_issues():
-    with open(issues_file, 'r') as file:
+    with open(config.get("opencast", "issues_file"), 'r') as file:
         issues = json.load(file)
     return len(issues["issues"])
     
 def subjects():
-    with open(issues_file, 'r') as file:
+    with open(config.get("opencast", "issues_file"), 'r') as file:
         issues = json.load(file)
     subjects = []
     for i in range(len(issues["issues"])):
@@ -36,15 +32,14 @@ def subjects():
     return subjects
 
 def pretty_print_file():
-    file_name = "design.json"
-    with open(file_name, 'r') as file:
+    with open(config.get("opencast", "issues_file"), 'r') as file:
         infile = json.load(file)
     outfile = "pp_"+file_name
     with open(outfile, 'w') as file:
         file.write(json.dumps(infile, sort_keys=False, indent=4))
 
 def pretty_print_screen(file_name):
-    with open(file_name, 'r') as file:
+    with open(config.get("opencast", "issues_file"), 'r') as file:
         infile = json.load(file)
     print json.dumps(infile, sort_keys = False, indent = 4)
 
@@ -56,7 +51,7 @@ def retrieve_issues(user, passwd, file_name):
     urllib2.install_opener(opener)
     try: 
         result = urllib2.urlopen("https://developers.superhub-project.eu/projects/wp1/issues.json?tracker_id=14")#&limit=1")
-        with open(file_name, 'w') as file:
+        with open(config.get("opencast", "issues_file"), 'w') as file:
             for line in result:
                 file.write(line)            
 
