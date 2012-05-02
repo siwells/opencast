@@ -1,12 +1,14 @@
 import json
 import urllib2
 
-def description(file_name, issue_id):
-    with open(file_name, 'r') as file:
-        infile = json.load(file)
-    for i in range(len(infile["issues"])):
-        if issue_id == infile["issues"][i]["id"]:
-            return infile["issues"][i]["description"]
+issues_file = "design.json"
+
+def description(issue_id):
+    with open(issues_file, 'r') as file:
+        issues = json.load(file)
+    for i in range(len(issues["issues"])):
+        if issue_id == issues["issues"][i]["id"]:
+            return issues["issues"][i]["description"]
     return None
 
 def num_issues(file_name):
