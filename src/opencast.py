@@ -37,8 +37,7 @@ def pretty_print_screen(file_name):
         infile = json.load(file)
     print json.dumps(infile, sort_keys = False, indent = 4)
 
-def retrieve_issues(user, passwd):
-    file_name = "design.json"
+def retrieve_issues(user, passwd, file_name):
     auth_handler = urllib2.HTTPBasicAuthHandler()
     auth_handler.add_password(realm='Redmine API', uri='https://developers.superhub-project.eu/projects/wp1/issues.json', user=user, passwd=passwd)
 
