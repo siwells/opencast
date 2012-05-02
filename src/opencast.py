@@ -16,12 +16,12 @@ def num_issues():
         issues = json.load(file)
     return len(issues["issues"])
     
-def subjects(file_name):
-    with open(file_name, 'r') as file:
-        infile = json.load(file)
+def subjects():
+    with open(issues_file, 'r') as file:
+        issues = json.load(file)
     subjects = []
-    for i in range(len(infile["issues"])):
-        subjects.append(infile["issues"][i]["subject"])
+    for i in range(len(issues["issues"])):
+        subjects.append(issues["issues"][i]["subject"])
     return subjects
 
 def pretty_print_file():
